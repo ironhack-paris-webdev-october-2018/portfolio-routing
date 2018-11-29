@@ -7,6 +7,7 @@ import HomePage from "./components/HomePage.js";
 import AboutUs from "./components/AboutUs.js";
 import ProjectList from "./components/ProjectList.js";
 import NotFound from "./components/NotFound.js";
+import ProjectDetails from "./components/ProjectDetails.js";
 
 class App extends Component {
   render() {
@@ -33,6 +34,7 @@ class App extends Component {
             */}
           <Route exact path="/" component={HomePage} />
           <Route path="/about" component={AboutUs} />
+          <Route path="/projects/:projectId" component={ProjectDetails} />
           <Route path="/projects" component={ProjectList} />
 
           {/* 404 route ALWAYS LAST */}
@@ -41,6 +43,15 @@ class App extends Component {
 
         <footer>
           <p>Made with ⚙️ at Ironhack</p>
+          <Switch>
+            {/*
+              * Use render() to define the route's content directly
+              * (or to send your own PROPS to your component)
+              */}
+            <Route path="/projects" render={() => {
+              return <p>WARNING: These Projects Are Fake.</p>;
+            }} />
+          </Switch>
         </footer>
       </div>
     );
